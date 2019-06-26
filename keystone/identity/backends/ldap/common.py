@@ -1494,7 +1494,7 @@ class BaseLdap(object):
     @driver_hints.truncated
     def _ldap_get_all(self, hints, ldap_filter=None):
         query = u'(&%s(objectClass=%s)(%s=*))' % (
-            ldap_filter or self.ldap_filter or '',
+            utf8_decode(ldap_filter or self.ldap_filter or ''),
             self.object_class,
             self.id_attr)
         sizelimit = 0
